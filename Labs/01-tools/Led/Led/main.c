@@ -52,7 +52,8 @@ int main(void)
     // Infinite loop
     while (1)
     {
-       
+        PORTB = PORTB & ~(1<<LED_GREEN);
+         _delay_ms(LONG_DELAY);
         // Invert LED in Data Register
         // PORTB = PORTB xor 0010 0000
         PORTB = PORTB ^ (1<<LED_GREEN); // 1
@@ -108,11 +109,12 @@ int main(void)
            
            _delay_ms(LONG_DELAY);
            PORTB = PORTB & ~(1<<LED_GREEN); // 0
+           
            _delay_ms(SHORT_DELAY);
            
            PORTB = PORTB ^ (1<<LED_GREEN); // 1
-           
            _delay_ms(LONG_DELAY);
+         
          
     }
 
