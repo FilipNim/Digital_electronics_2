@@ -1,4 +1,4 @@
-# Lab 1: Filip NImrichter
+# Lab 1: Filip Nimrichter
 
 Link to my `Digital-electronics-2` GitHub repository:
 
