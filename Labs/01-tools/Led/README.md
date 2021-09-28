@@ -7,7 +7,7 @@ Link to my `Digital-electronics-2` GitHub repository:
 
 ### Blink example
 
-1. What is the meaning of the following binary operators in C?
+1. Meaning of the following binary operators in C?
    * `|` or
    * `&` and
    * `^` xor
@@ -15,7 +15,7 @@ Link to my `Digital-electronics-2` GitHub repository:
    * `<<` left shift
    * `>>` right shift
 
-2. Complete truth table with operators: `|`, `&`, `^`, `~`
+2. Truth table with operators: `|`, `&`, `^`, `~`
 
 | **b** | **a** |**b or a** | **b and a** | **b xor a** | **not b** |
 | :-: | :-: | :-: | :-: | :-: | :-: |
@@ -27,7 +27,7 @@ Link to my `Digital-electronics-2` GitHub repository:
 
 ### Morse code
 
-1. Listing of C code with syntax highlighting which repeats one "dot" and one "comma" (BTW, in Morse code it is letter `A`) on a LED:
+1. Repeating one "dot" and one "comma" on a LED:
 
 ```c
 
@@ -78,6 +78,6 @@ int main(void)
 ```
 
 
-2. Scheme of Morse code application, i.e. connection of AVR device, LED, resistor, and supply voltage. The image can be drawn on a computer or by hand. Always name all components and their values!
+2. Scheme of Morse code application, i.e. connection of AVR device, LED, resistor, and supply voltage.
 
-   ![scheme](Images/scheme.png)
+   ![scheme](Images/Scheme.png)
