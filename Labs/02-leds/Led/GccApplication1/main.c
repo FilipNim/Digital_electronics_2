@@ -21,7 +21,7 @@
 /* Includes ----------------------------------------------------------*/
 #include <util/delay.h>     // Functions for busy-wait delay loops
 #include <avr/io.h>         // AVR device-specific IO definitions
-
+#include <avr/sfr_defs.h>
 /* Functions ---------------------------------------------------------*/
 /**********************************************************************
  * Function: Main function where the program execution begins
@@ -41,21 +41,17 @@ int main(void)
     
     PORTC = PORTC & (1<<LED_WHITE);
     // Configure Push button at port D and enable internal pull-up resistor
-    DDRD = DDRD | ~(1<<BUTTON);
+    DDRD = DDRD & ~(1<<BUTTON);
 
-    PORTD = PORTD & (1<<BUTTON);
+    PORTD = PORTD | (1<<BUTTON);
 
-    if (bit_is_clear(PIND, 0)) {
+    if (bit_is_clear(PIND, BUTTON)) {
       
-    while (1)
-    {
-        // Pause several milliseconds
-        _delay_ms(BLINK_DELAY);
+
         
         PORTB = PORTB ^ (1<<LED_GREEN);
         PORTC = PORTC ^ (1<<LED_WHITE);
-        // WRITE YOUR CODE HERE
-    }
+        loop_until_bit_is_set(PIND, BUTTON);
      }
     // Will never reach this
     return 0;
