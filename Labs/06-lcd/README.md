@@ -1,25 +1,25 @@
-# Lab 6: YOUR_FIRSTNAME FAMILYNAME
+# Lab 6: Filip Nimrichter
 
 Link to this file in your GitHub repository:
 
-[https://github.com/your-github-account/repository-name/lab_name](https://github.com/...)
+[https://github.com/FilipNim/Digital_electronics_2/tree/master/Labs/06-lcd](https://github.com/FilipNim/Digital_electronics_2/tree/master/Labs/06-lcd)
 
 
 ### LCD display module
 
 1. In your words, describe what ASCII table is.
-   * ASCII table:
+   * ASCII table: Je to tabulka která obsahuje znaky abecedy, ale i jiné používané znaky. Díky této tabulce můžeme převádět bity na výstupní znaky na displeji.
 
 2. (Hand-drawn) picture of time signals between ATmega328P and LCD keypad shield (HD44780 driver) when transmitting three character data `De2`.
 
-   ![your figure]()
+   ![Data](Images/Data.png)
 
 
 ### Stopwatch
 
 1. Flowchart figure for `TIMER2_OVF_vect` interrupt service routine which overflows every 16&nbsp;ms but it updates the stopwatch LCD approximately every 100&nbsp;ms (6 x 16&nbsp;ms = 100&nbsp;ms). Display tenths of a second and seconds `00:seconds.tenths`. Let the stopwatch counts from `00:00.0` to `00:59.9` and then starts again. The image can be drawn on a computer or by hand. Use clear descriptions of the individual steps of the algorithms.
 
-   ![your figure]()
+   ![Flowchart](Images/Flowchart.png)
 
 
 ### Custom characters
@@ -30,7 +30,24 @@ Link to this file in your GitHub repository:
 /* Variables ---------------------------------------------------------*/
 // Custom character definition
 uint8_t customChar[16] = {
-    // WRITE YOUR CODE HERE
+
+    0b00010,
+    0b00110,
+    0b01110,
+    0b11110,
+    0b00111,
+    0b00011,
+    0b00010,
+    0b11001,
+    
+    0b01100,
+    0b00110,
+    0b01100,
+    0b11100,
+    0b11110,
+    0b11101,
+    0b11011,
+    0b10111
 
 };
 ```
@@ -42,4 +59,4 @@ Consider a kitchen alarm with an LCD, one LED and three push buttons: start, +1 
 
 1. Scheme of kitchen alarm; do not forget the supply voltage. The image can be drawn on a computer or by hand. Always name all components and their values.
 
-   ![your figure]()
+   ![Alarm](Images/Alarm.png)
