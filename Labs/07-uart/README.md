@@ -65,12 +65,19 @@ ISR(ADC_vect)
 
      lcd_gotoxy(8, 1);
      itoa(value, lcd_string, 10);
-     if (value>1000) {lcd_puts("none");}
-     if ((value>600)&&(value<1000)) {lcd_puts("Select");}
-     if ((value>350)&&(value<450)) {lcd_puts("Left");}
-     if ((value>200)&&(value<270)) {lcd_puts("Down");}
-     if ((value>5)&&(value<120)) {lcd_puts("Up");}
-     if (value==0) {lcd_puts("Right");}
+     if (value>1000) {
+     lcd_puts("none");
+     } else if ((value>600)&&(value<1000)) {
+     lcd_puts("Select");
+     } else if ((value>350)&&(value<450)) {
+     lcd_puts("Left");
+     } else if ((value>200)&&(value<270)) {
+     lcd_puts("Down");
+     } else if ((value>5)&&(value<120)) {
+     lcd_puts("Up");
+     } else if (value==0) {
+     lcd_puts("Right");
+     }
 
 }
 ```
@@ -79,11 +86,11 @@ ISR(ADC_vect)
 
 1. (Hand-drawn) picture of UART signal when transmitting three character data `De2` in 4800 7O2 mode (7 data bits, odd parity, 2 stop bits, 4800&nbsp;Bd).
 
-   ![your figure]()
+   ![Data](Images/Data.png)
 
 2. Flowchart figure for function `uint8_t get_parity(uint8_t data, uint8_t type)` which calculates a parity bit of input 8-bit `data` according to parameter `type`. The image can be drawn on a computer or by hand. Use clear descriptions of the individual steps of the algorithms.
 
-   ![your figure]()
+   ![Flowchart](Images/Flowchart.png)
 
 ### Temperature meter
 
@@ -91,4 +98,4 @@ Consider an application for temperature measurement and display. Use temperature
 
 1. Scheme of temperature meter. The image can be drawn on a computer or by hand. Always name all components and their values.
 
-   ![your figure]()
+   ![Scheme](Images/Scheme.png)
