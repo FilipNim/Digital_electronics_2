@@ -1,8 +1,7 @@
-# Lab 8: YOUR_FIRSTNAME LASTNAME
-
+# Lab 8: Filip Nimrichter
 Link to this file in your GitHub repository:
 
-[https://github.com/your-github-account/repository-name/lab_name](https://github.com/...)
+[https://github.com/FilipNim/Digital_electronics_2/tree/master/Labs/08-i2c](https://github.com/FilipNim/Digital_electronics_2/tree/master/Labs/08-i2c)
 
 ### Arduino Uno pinout
 
@@ -30,7 +29,8 @@ ISR(TIMER1_OVF_vect)
 {
     static state_t state = STATE_IDLE;  // Current state of the FSM
     static uint8_t addr = 7;            // I2C slave address
-    uint8_t result = 1;                 // ACK result from the bus
+    uint8_t result = 1;          // ACK result from the bus
+    uint8_t tem = 1; 
     char uart_string[2] = "00"; // String for converting numbers by itoa()
 
     // FSM
@@ -40,7 +40,9 @@ ISR(TIMER1_OVF_vect)
     case STATE_IDLE:
         addr++;
         // If slave address is between 8 and 119 then move to SEND state
-
+        if (addr>7 && addr<120 ) {
+        state = STATE_SEND;     
+        };
         break;
     
     // Transmit I2C slave address and get result
@@ -56,15 +58,24 @@ ISR(TIMER1_OVF_vect)
         twi_stop();
         /* Test result from I2C bus. If it is 0 then move to ACK state, 
          * otherwise move to IDLE */
-
+        if (result == 0  ) {
+            state = STATE_ACK;
+        } else if (result == 1)
+        {
+            state = STATE_IDLE;
+        };
+        
+       
         break;
 
     // A module connected to the bus was found
     case STATE_ACK:
         // Send info about active I2C slave to UART and move to IDLE
-
-        break;
-
+        itoa(addr, uart_string, 16);
+        uart_puts(uart_string);
+        uart_puts("\r\n");
+        state = STATE_IDLE;
+    
     // If something unexpected happens then move to IDLE
     default:
         state = STATE_IDLE;
@@ -75,7 +86,7 @@ ISR(TIMER1_OVF_vect)
 
 2. (Hand-drawn) picture of I2C signals when reading checksum (only 1 byte) from DHT12 sensor. Indicate which specific moments control the data line master and which slave.
 
-   ![your figure]()
+   ![Signals](Images/Signals.png)
 
 ### Meteo station
 
@@ -83,4 +94,4 @@ Consider an application for temperature and humidity measurement and display. Us
 
 1. FSM state diagram picture of meteo station. The image can be drawn on a computer or by hand. Concise name of individual states and describe the transitions between them.
 
-   ![your figure]()
+   ![FSM](Images/FSM.png)
