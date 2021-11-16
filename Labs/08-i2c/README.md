@@ -13,7 +13,7 @@ Link to this file in your GitHub repository:
    * SPI pins
    * external interrupt pins INT0, INT1
 
-   ![arduino](Images/arduino.png)
+   ![arduino](Images/Arduino.png)
 
 ### I2C
 
